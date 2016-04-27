@@ -5,6 +5,8 @@
 //  Created by Jake Ursetta on 2/15/16.
 //  Copyright © 2016 Jake Ursetta. All rights reserved.
 //
+// This is the main function which calls the header function files for the class communication network
+// This function runs the menu for the entire program
 
 #include <iostream>
 #include "CommunicationNetwork.h"
@@ -59,10 +61,12 @@ int main(int argc, const char * argv[]) {
             
         }
         
+        // Check personal balance
         else if (input == "3"){
             cout << "Personal Balance: $" << city1.checkPersonalBalance() << endl;
         }
         
+        // Check cost to send message
         else if (input == "4"){
             if(city1.listBuilt()){
                 string city;
@@ -90,6 +94,7 @@ int main(int argc, const char * argv[]) {
             }
         }
         
+        // Transmit to a specific city
         else if (input == "6"){
             if(city1.listBuilt()){
                 string message;
@@ -105,6 +110,7 @@ int main(int argc, const char * argv[]) {
             }
         }
         
+        // Print city info
         else if(input == "7"){
             if(city1.listBuilt()){
                 cout << "Please enter a city name: " << endl;
@@ -117,7 +123,7 @@ int main(int argc, const char * argv[]) {
             }
         }
         
-        
+        // Print previously sent messgeas
         else if (input == "8"){
                 city1.printPreviousSent();
         }
