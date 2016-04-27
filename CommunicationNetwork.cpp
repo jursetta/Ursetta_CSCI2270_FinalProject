@@ -5,6 +5,7 @@
 //  Created by Jake Ursetta on 2/15/16.
 //  Copyright © 2016 Jake Ursetta. All rights reserved.
 //
+//  Contains all methods needs for the header file to run and access
 
 #include "CommunicationNetwork.h"
 
@@ -17,6 +18,7 @@ CommunicationNetwork::CommunicationNetwork(){
     personalBalance = 40;
 }
 
+// desctructor
 CommunicationNetwork::~CommunicationNetwork(){
     
 }
@@ -142,6 +144,7 @@ void CommunicationNetwork::transmitMsgCoast(std::string message){
             sender = sender -> next;
             personalBalance --;
         }
+        // prints the received line if it is the tail
         else{
             std::cout<< sender->cityName<<" received "<<sender->message<< " from " << sender -> previous -> cityName <<std::endl;
             sender -> previousMessagesRecieved.push_back(sender -> message);
@@ -149,6 +152,7 @@ void CommunicationNetwork::transmitMsgCoast(std::string message){
             sender = sender -> next;
         }
     }
+    // checks balances and deductions and prints them
     std::cout << "-----------------------" <<  std::endl;
     std::cout << "Balance Deducted: $" << cost << std::endl;
     std::cout << "New Personal Balance: $" << personalBalance << std::endl;
@@ -188,6 +192,7 @@ void CommunicationNetwork::transmitMsg(std::string cityRecieved, std::string mes
             sender = sender -> next;
             personalBalance --;
         }
+        // printe received info and treats the received city as a tail
         else{
             std::cout<< sender->cityName<<" received "<<sender->message<< " from " << sender -> previous -> cityName <<std::endl;
             sender -> previousMessagesRecieved.push_back(sender -> message);
@@ -195,10 +200,10 @@ void CommunicationNetwork::transmitMsg(std::string cityRecieved, std::string mes
             sender = sender -> next;
         }
     }
+    // checks balances and deductions and prints them
     std::cout << "-----------------------" <<  std::endl;
     std::cout << "Balance Deducted: $" << cost << std::endl;
     std::cout << "New Personal Balance: $" << personalBalance << std::endl;
-    // print if list has not been built.
 }
 
 // print the network
@@ -254,32 +259,39 @@ void CommunicationNetwork::deleteCity(std::string cityDelete){
     }
 }
 
+// finds info on city and prints it
 void CommunicationNetwork::printCityInfo(std::string name){
     City *temp = head;
+    // while loop looks for city name
     while(temp != NULL){
         if(temp -> cityName == name){
             break;
         }
         temp = temp -> next;
     }
+    // if not found, prints city not found
     if(temp == NULL){
         std::cout << "City Not Found" << std::endl;
     }
+    // if found prints all information needed from the pointer to the city which was requested
     else{
         std::cout << "City: " << temp -> cityName << std::endl;
         std::cout << "Balance: $" << temp -> balance << std::endl;
+        // checks for head case
         if(temp != head){
             std::cout << "City Previous: " << temp -> previous -> cityName << std::endl;
         }
         else{
             std::cout << "City Previous: None" << std::endl;
         }
+        // checks for tail case
         if(temp != tail){
             std::cout << "City Next:  " << temp -> next -> cityName << std::endl;
         }
         else{
             std::cout << "City Next: None" << std::endl;
         }
+        // checks if any messages have been passed and prints accordingly
         if(temp->previousMessagesPassed.size() == 0){
             std::cout << "Previous Messages Passed: None" <<  std::endl;
         }
@@ -290,6 +302,7 @@ void CommunicationNetwork::printCityInfo(std::string name){
             }
             std::cout << "---------------------------" <<  std::endl;
         }
+        // checks if any messages have been received and prints accordingly
         if(temp->previousMessagesRecieved.size() == 0){
             std::cout << "Previous Messages Received: None" <<  std::endl;
         }
@@ -303,7 +316,10 @@ void CommunicationNetwork::printCityInfo(std::string name){
     }
 }
 
+
+// Prints all messages that have been sent
 void CommunicationNetwork::printPreviousSent(){
+    // checks if any messages have been sent yest and prints accordingly
     if(previousMessagesSent.size() == 0){
         std::cout << "No messages have been sent" << std::endl;
     }
@@ -334,25 +350,28 @@ void CommunicationNetwork::clearNetwork(){
     
 }
 
+// helper function to check if the city is built or not
 bool CommunicationNetwork::listBuilt(){
     if(head == NULL) return false;
     else return true;
 }
 
+// Returns personal balance due to the fact that it is a private variable
 int CommunicationNetwork::checkPersonalBalance(){
     return personalBalance;
 }
 
 
+// helper and public method. This method is called before any tranmission to insure that the user has enough funcds. It is also used for the user to check the cost of sending a mission before they decide to send it.
 int CommunicationNetwork::checkCost(std::string cityRecieved){
     City * temp = head;
     int cost = 0;
-    
+    // insures user is not passing the message to the sender
     if(head -> cityName == cityRecieved){
         std::cout << "Cannot send message from sender city to sender city" << std::endl;
         return cost;
     }
-    
+    // looks for city
     while(temp != NULL){
         if(temp -> cityName == cityRecieved){
             return cost;
@@ -360,7 +379,7 @@ int CommunicationNetwork::checkCost(std::string cityRecieved){
         cost ++;
         temp = temp -> next;
     }
-    
+    // returns error if it is not found
     if (temp == NULL){
         std::cout << "City Not found" << std::endl;
         return 0;
