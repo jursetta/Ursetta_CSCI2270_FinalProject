@@ -42,8 +42,8 @@ int main(int argc, const char * argv[]) {
         
         // build network
         if(input == "1"){
+            // Check for built list
             if(!city1.listBuilt()){
-                // Check for build list
                 city1.buildNetwork();
             }
             else{
@@ -53,7 +53,7 @@ int main(int argc, const char * argv[]) {
         
         // Print netowrk
         else if(input == "2"){
-            // Check for build list
+            // Check for built list
             if(city1.listBuilt()){
                 city1.printNetwork();
             }
@@ -70,7 +70,7 @@ int main(int argc, const char * argv[]) {
         
         // Check cost to send message
         else if (input == "4"){
-            // Check for build list
+            // Check for built list
             if(city1.listBuilt()){
                 string city;
                 cout << "Enter city to send a message to: " << endl;
@@ -86,7 +86,7 @@ int main(int argc, const char * argv[]) {
         
         // Transmit message coast to coast...
         else if(input == "5"){
-            // Check for build list
+            // Check for built list
             if(city1.listBuilt()){
                 string message;
                 cout << "Please enter message to transmit across the coast: " << endl;
@@ -100,7 +100,7 @@ int main(int argc, const char * argv[]) {
         
         // Transmit to a specific city
         else if (input == "6"){
-            // Check for build list
+            // Check for built list
             if(city1.listBuilt()){
                 string message;
                 string city;
@@ -117,7 +117,7 @@ int main(int argc, const char * argv[]) {
         
         // Print city info
         else if(input == "7"){
-            // Check for build list
+            // Check for built list
             if(city1.listBuilt()){
                 cout << "Please enter a city name: " << endl;
                 string name;
@@ -136,7 +136,7 @@ int main(int argc, const char * argv[]) {
         
         // add city in command window
         else if(input == "9"){
-            // Check for build list
+            // Check for built list
             if(city1.listBuilt()){
             string cityNew;
             string cityPrevious;
@@ -154,7 +154,7 @@ int main(int argc, const char * argv[]) {
         
         // delete city
         else if(input == "10"){
-            // Check for build list
+            // Check for built list
             if(city1.listBuilt()){
             string cityDelete;
             cout << "Enter a city name: " << endl;
@@ -170,7 +170,7 @@ int main(int argc, const char * argv[]) {
         
         // Clear out network
         else if(input == "11"){
-            // Check for build list
+            // Check for built list
             if(city1.listBuilt()){
             city1.clearNetwork();
             }
