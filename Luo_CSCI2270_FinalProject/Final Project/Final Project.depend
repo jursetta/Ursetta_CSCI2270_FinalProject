@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1461444819 source:/home/user/Desktop/Data Structure/Final Project/main.cpp
+	"WoolTree.h"
+	<iostream>
+	<string>
+	<fstream>
+	<sstream>
+	<stdlib.h>
+
+1461441800 /home/user/Desktop/Data Structure/Final Project/include/WoolTree.h
+	<fstream>
+	<string.h>
+	<sstream>
+	<vector>
+	<iostream>
+	<ostream>
+	<deque>
+	<stdlib.h>
+	<string>
+	<queue>
+
+1461443042 source:/home/user/Desktop/Data Structure/Final Project/src/WoolTree.cpp
+	"WoolTree.h"
+	<tgmath.h>
+
