@@ -16,6 +16,8 @@
 // Creation of communicationNetwork
 CommunicationNetwork::CommunicationNetwork(){
     personalBalance = 40;
+    head = NULL;
+    tail = NULL;
 }
 
 // desctructor
